@@ -1,0 +1,40 @@
+.position1{
+    top: 10px;
+    left: 35%;
+}
+.position2{
+    top: 300px;
+    left: 0px;
+    
+}
+.position3{
+    top: 300px;
+    right: 0px;
+}
+
+.nextToPos1{
+    animation: 2s nextToPos1 forwards;
+}
+
+@keyframes nextToPos1 {
+    from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
+    to   { transform: rotate(30deg) translateX(200px)  translateY(-450px) rotate(-30deg) }
+}
+
+.nextToPos3{
+    animation: 2s nextToPos3 forwards;
+}
+
+@keyframes nextToPos3 {
+    from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
+    to   { transform: rotate(30deg) translateX(454px) translateY(74px) rotate(-30deg) }
+}
+
+.nextToPos2{
+    animation: 2s nextToPos2 forwards;
+}
+
+@keyframes nextToPos2 {
+    from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
+    to   { transform: rotate(30deg) translateX(-653px) translateY(377px) rotate(-30deg) }
+}

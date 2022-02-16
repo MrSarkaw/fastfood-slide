@@ -1,0 +1,114 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+  <link rel="stylesheet" href="index.css">
+</head>
+<body style="background-repeat: no-repeat; background-size: cover;" class="min-h-screen overflow-hidden bg-gradient-to-b from-orange-100 via-bg-gray-100 to-bg-gray-100">
+    <div class="flex flex-wrap justify-between item-center py-14 px-20">
+        <div>
+            <div class="w-40 border-b text-gray-600 border-gray-600 pb-2 flex space-x-2 items-center">
+                <i class="fas fa-search-location"></i> <input type="text" class="focus:outline-none bg-transparent" placeholder="location" name="" id="">
+            </div>
+        </div>
+
+        <div  class="text-3xl  text-center font-bold ">
+            <i class="fas fa-utensils text-orange-400"></i> Fastfood
+        </div>
+
+        <div class="flex space-x-3">
+            <i class="bg-gray-600 text-white px-2 py-2 rounded-lg fas fa-cart-shopping"></i>
+            <div class="w-10 grid gap-1" dir="rtl">   
+                <div class="w-full h-2 rounded-full bg-orange-400"></div>
+                <div class="w-9/12 h-2 rounded-full bg-orange-400"></div>
+                <div class="w-full h-2 rounded-full bg-orange-400"></div>
+            </div>
+        </div>
+    </div>
+
+    <p class="text-5xl text-gray-700 my-2 text-center font-bold">
+        What you like to eat today?
+    </p>
+    <div class="flex items-center justify-center mt-10 space-x-4">
+        <button class="px-10 py-2 border font-bold  border-orange-500 rounded-full bg-orange-400 text-white">Order Now</button>
+        <button class="px-10 py-2 border  font-bold rounded-full border-gray-600 text-gray-600">See Full Menu</button>
+    </div>
+
+    <div class="w-10/12 mx-auto relative">
+        <div class="w-full absolute top-40 flex justify-between">
+            <button onclick="next('prev')"><i class=" text-6xl fas fa-long-arrow-left"></i></button>
+            <button onclick="nextFunction()"><i class=" text-6xl fas fa-long-arrow-right"></i></button>
+        </div>
+
+        <div class="position1 absolute" id="1">
+            <img src="https://pngimg.com/uploads/steak/steak_PNG25.png" class="w-96" alt="">
+        </div>
+        <div class="position2 absolute " id="2">
+            <img src="https://freepngimg.com/download/food/139178-food-plate-diet-free-transparent-image-hd.png" class="w-96" alt="">
+        </div>
+        <div class="position3 absolute" id="3">
+            <img src="https://pngimg.com/uploads/steak/steak_PNG25.png" class="w-96" alt="">
+        </div>
+    </div>
+
+    <script>
+
+
+        let next = (slide) =>{
+            if(slide.classList.contains('position1')){
+                slide.classList.add("nextToPos3")
+           
+            }else if (slide.classList.contains('position2')){
+                slide.classList.add("nextToPos1")
+             
+            }else{
+                slide.classList.add("nextToPos2")
+            }
+            
+        };
+
+       let removeClass = (slide) =>{
+            if(slide.classList.contains('position1')){
+                slide.classList.remove("nextToPos3")
+                slide.classList.remove("position1")
+                slide.classList.add("position3")
+        
+            }else if (slide.classList.contains('position2')){
+                slide.classList.remove("nextToPos1")
+                slide.classList.remove("position2")
+                slide.classList.add("position1")
+            
+            }else{
+                slide.classList.remove("nextToPos2")
+                slide.classList.remove("position3")
+                slide.classList.add("position2")
+            }
+        
+        };
+        
+        let nextFunction =()=>{
+            let slide1 = document.getElementById("1");
+            let slide2 = document.getElementById("2");
+            let slide3 = document.getElementById("3");
+        
+            next(slide1)
+            next(slide2)
+            next(slide3)
+            
+
+            setTimeout(()=>{
+                removeClass(slide1)
+                removeClass(slide2)
+                removeClass(slide3)
+            },2000)
+           
+        };
+        
+      
+
+    </script>
+</body>
+</html>
