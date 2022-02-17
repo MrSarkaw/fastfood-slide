@@ -12,14 +12,40 @@
     right: 0px;
 }
 
+
+
+.rotate{
+    animation: 2s rotate forwards;
+}
+
+@keyframes rotate {
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+
 .nextToPos1{
     animation: 2s nextToPos1 forwards;
 }
-
 @keyframes nextToPos1 {
     from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
     to   { transform: rotate(30deg) translateX(200px)  translateY(-450px) rotate(-30deg) }
 }
+
+
+.prevToPos1{
+    animation: 2s prevToPos1 forwards;
+}
+@keyframes prevToPos1 {
+    from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
+    to   { transform: rotate(-30deg) translateX(-163px)  translateY(-429px) rotate(30deg) }
+}
+
+
+
+
+
 
 .nextToPos3{
     animation: 2s nextToPos3 forwards;
@@ -30,6 +56,20 @@
     to   { transform: rotate(30deg) translateX(454px) translateY(74px) rotate(-30deg) }
 }
 
+
+.prevToPos3{
+    animation: 2s prevToPos3 forwards;
+}
+
+@keyframes prevToPos3 {
+    from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
+    to   { transform: rotate(-30deg) translateX(653px) translateY(377px) rotate(30deg) }
+}
+
+
+
+
+
 .nextToPos2{
     animation: 2s nextToPos2 forwards;
 }
@@ -38,3 +78,13 @@
     from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
     to   { transform: rotate(30deg) translateX(-653px) translateY(377px) rotate(-30deg) }
 }
+
+.prevToPos2{
+    animation: 2s prevToPos2 forwards;
+}
+
+@keyframes prevToPos2 {
+    from { transform: rotate(0deg) translateX(0px)  translateY(0px) ; }
+    to   { transform: rotate(-30deg) translateX(-490px) translateY(52px) rotate(30deg) }
+}
+

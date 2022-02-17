@@ -39,8 +39,8 @@
 
     <div class="w-10/12 mx-auto relative">
         <div class="w-full absolute top-40 flex justify-between">
-            <button onclick="next('prev')"><i class=" text-6xl fas fa-long-arrow-left"></i></button>
-            <button onclick="nextFunction()"><i class=" text-6xl fas fa-long-arrow-right"></i></button>
+            <button onclick="changeSlide('prev')"><i class=" text-6xl fas fa-long-arrow-left"></i></button>
+            <button onclick="changeSlide('next')"><i class=" text-6xl fas fa-long-arrow-right"></i></button>
         </div>
 
         <div class="position1 absolute" id="1">
@@ -50,27 +50,31 @@
             <img src="https://freepngimg.com/download/food/139178-food-plate-diet-free-transparent-image-hd.png" class="w-96" alt="">
         </div>
         <div class="position3 absolute" id="3">
-            <img src="https://pngimg.com/uploads/steak/steak_PNG25.png" class="w-96" alt="">
+            <img src="https://www.chefmarcsmealprep.com/wp-content/uploads/2018/03/kisspng-health-food-healthy-diet-meal-delivery-service-weight-loss-5b649d89de2764.36415564153332058591.png" class="w-96" alt="">
         </div>
     </div>
 
     <script>
 
-
+        let lock = 0;
         let next = (slide) =>{
             if(slide.classList.contains('position1')){
                 slide.classList.add("nextToPos3")
-           
+                
             }else if (slide.classList.contains('position2')){
                 slide.classList.add("nextToPos1")
              
             }else{
                 slide.classList.add("nextToPos2")
             }
+
+            slide.querySelector("img").classList.add("rotate")
             
         };
 
-       let removeClass = (slide) =>{
+       
+
+       let removeClassNext = (slide) =>{
             if(slide.classList.contains('position1')){
                 slide.classList.remove("nextToPos3")
                 slide.classList.remove("position1")
@@ -86,24 +90,77 @@
                 slide.classList.remove("position3")
                 slide.classList.add("position2")
             }
+
+            slide.querySelector("img").classList.remove("rotate")
+
         
         };
+         
         
-        let nextFunction =()=>{
-            let slide1 = document.getElementById("1");
-            let slide2 = document.getElementById("2");
-            let slide3 = document.getElementById("3");
-        
-            next(slide1)
-            next(slide2)
-            next(slide3)
-            
+        let prev = (slide) =>{
+            if(slide.classList.contains('position1')){
+                slide.classList.add("prevToPos2")
+                
+            }else if (slide.classList.contains('position2')){
+                slide.classList.add("prevToPos3")
+                
+            }else{
+                slide.classList.add("prevToPos1")
+            }
 
-            setTimeout(()=>{
-                removeClass(slide1)
-                removeClass(slide2)
-                removeClass(slide3)
-            },2000)
+            slide.querySelector("img").classList.add("rotate")
+            
+        };
+
+        let removeClassPrev = (slide) => {
+            if(slide.classList.contains('position1')){
+                slide.classList.remove("prevToPos2")
+                slide.classList.remove("position1")
+                slide.classList.add("position2")
+        
+            }else if (slide.classList.contains('position2')){
+                slide.classList.remove("prevToPos3")
+                slide.classList.remove("position2")
+                slide.classList.add("position3")
+            
+            }else{
+                slide.classList.remove("prevToPos1")
+                slide.classList.remove("position3")
+                slide.classList.add("position1")
+            }
+
+            slide.querySelector("img").classList.remove("rotate")
+
+        
+        }
+
+
+        let changeSlide =(state)=>{
+
+            if(lock == 0){
+                lock = 1;
+                let slide1 = document.getElementById("1");
+                let slide2 = document.getElementById("2");
+                let slide3 = document.getElementById("3");
+            
+                state == 'next'? next(slide1) : prev(slide1) ;
+                state == 'next'? next(slide2) : prev(slide2) ;
+                state == 'next'? next(slide3) : prev(slide3) ;
+                
+    
+                setTimeout(()=>{
+                    if(state == "next"){
+                        removeClassNext(slide1)
+                        removeClassNext(slide2)
+                        removeClassNext(slide3)
+                    }else{
+                        removeClassPrev(slide1)
+                        removeClassPrev(slide2)
+                        removeClassPrev(slide3)
+                    }
+                    lock = 0;
+                },2000)
+            }
            
         };
         
